@@ -41,3 +41,5 @@ View code:
 <g:quartzProgressBar id="${params.progBarId2 }" />
 ```
 
+Sample grails project at: https://github.com/fabiooshiro/quartz-progress-bar-sample
+
