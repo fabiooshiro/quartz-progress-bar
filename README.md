@@ -46,5 +46,18 @@ View code:
 <g:quartzProgressBar id="${params.progBarId2 }" />
 ```
 
+All jobs running:
+
+```html
+<script type="text/javascript">
+    var config = {
+        contextPath: "${request.contextPath}"
+    };
+</script>
+<g:quartzProgressBarList />
+```
+
+
+
 Sample grails project at: https://github.com/fabiooshiro/quartz-progress-bar-sample
 
