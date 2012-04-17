@@ -15,7 +15,7 @@ public class QuartzProgressBar {
 				//quartzProgressDataFactory.kill(quartzProgressData.id)
 			}
 		)
-		println "Create progress with id = ${quartzProgressData.id}"
+		//println "Create progress with id = ${quartzProgressData.id}"
 		return quartzProgressData.id
 	}
 	

@@ -37,6 +37,11 @@ def save() {
 View code:
 
 ```html
+<script type="text/javascript">
+    var config = {
+        contextPath: "${request.contextPath}"
+    };
+</script>
 <g:quartzProgressBar id="${params.progBarId }" />
 <g:quartzProgressBar id="${params.progBarId2 }" />
 ```

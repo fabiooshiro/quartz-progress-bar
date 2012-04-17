@@ -25,4 +25,12 @@ public class ProgressDataController {
 			quartzProgressData
 		}
 	}
+    
+    def list = {
+        def quartzProgressDataList = QuartzProgressDataFactory.getInstance().list()
+        render(contentType: "text/json") {
+            quartzProgressDataList
+        }
+    }
+    
 }

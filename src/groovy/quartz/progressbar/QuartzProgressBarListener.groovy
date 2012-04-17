@@ -14,6 +14,12 @@ class QuartzProgressBarListener extends JobListenerSupport {
     public String getName() { return NAME; }
 
     public void jobToBeExecuted(JobExecutionContext ctx) {
+        if(!ctx.mergedJobDataMap.get('quartzProgressData.id')){
+            QuartzProgressData quartzProgressData = QuartzProgressDataFactory.getInstance().create()
+            ctx.mergedJobDataMap.put('quartzProgressData', quartzProgressData)
+            ctx.mergedJobDataMap.put('quartzProgressData.id', quartzProgressData.id)
+            println "Inserted quartzProgressData ${quartzProgressData.id} in quartz job."
+        }
     }
 
     public void jobWasExecuted(JobExecutionContext ctx, JobExecutionException exception) {

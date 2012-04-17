@@ -20,4 +20,25 @@ class QuartzProgressBarTagLib {
 			}
 		}
 	}
+    
+    def quartzProgressBarList = { attrs, body ->
+        r.require(module: 'quartzProgressBarJs', disposition: 'head')
+        def elId = attrs.get('id')?: 'quartz_progress_bar'
+        
+        out << """
+            <table id="${elId}" class="quartz_progress_bar">
+                <thead>
+                    <tr class='header'>
+                    <th>Jobs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        """.trim()
+        out << r.script{
+            out << "new quartz.progressbar.ProgressBarListView({el: \$('#${elId}')});"
+        }
+    }
+    
 }
