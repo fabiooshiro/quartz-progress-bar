@@ -20,6 +20,7 @@ def save() {
         progressBar.msg = "done"
     }
     def progBarId2 = QuartzProgressBar.execute{ ctx, progressBar ->
+        //ctx.myService.myMethod()
         progressBar.total = 42
         12.times{
             progressBar.step = it + 1
@@ -45,6 +46,48 @@ View code:
 <g:quartzProgressBar id="${params.progBarId }" />
 <g:quartzProgressBar id="${params.progBarId2 }" />
 ```
+
+How to get quartzProgressData object?
+
+```groovy
+package quartz.progress.bar.sample
+
+public class MySampleJob {
+
+    static triggers = {
+        cron name: 'MySampleProgressJob', cronExpression: "1/120 * * * * ?"
+    }
+    
+    def group = 'MySampleJobs'
+    
+    def grailsApplication
+
+    def execute(context) {
+        def progressData = context.mergedJobDataMap.get("quartzProgressData")
+        progressData.total = 331
+        331.times{
+            sleep(512)
+            progressData.step = it + 1
+            progressData.msg = "Step ${progressData.step} of ${progressData.total}"
+            println "Step ${progressData.step} of ${progressData.total}"
+        }
+        progressData.msg = "Done..."
+    }
+}
+```
+
+All jobs running:
+
+```html
+<script type="text/javascript">
+    var config = {
+        contextPath: "${request.contextPath}"
+    };
+</script>
+<g:quartzProgressBarList />
+```
+
+
 
 Sample grails project at: https://github.com/fabiooshiro/quartz-progress-bar-sample
 
