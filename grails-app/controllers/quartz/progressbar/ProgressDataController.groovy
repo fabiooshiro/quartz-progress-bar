@@ -11,8 +11,7 @@ public class ProgressDataController {
 	}
 	
 	def show = {
-		def id = params.id
-		def quartzProgressData = QuartzProgressDataFactory.getInstance().get(id)
+		def quartzProgressData = QuartzProgressDataFactory.getInstance().get(params.id)
 		if(!quartzProgressData){
 			quartzProgressData = [status: 'killed']
 		}

@@ -4,7 +4,7 @@ class QuartzProgressBarTagLib {
 
 	def quartzProgressBar = { attrs, body ->
 		if(attrs.id){
-			r.require(module: 'quartzProgressBarJs', disposition: 'head')
+			r.require(module: 'quartzProgressBarJs')
 			def elId = "QrtzPrgrssBr_${attrs.id}"
 			out << """
 				<div id="${elId}">
@@ -14,7 +14,6 @@ class QuartzProgressBarTagLib {
 					</div>
 				</div>
 			""".trim()
-			
 			out << r.script {
 				out << """new quartz.progressbar.ProgressBarView({el: \$('#${elId}'), model: new quartz.progressbar.ProgressData({id: '${attrs.id}'})});"""
 			}
@@ -22,7 +21,7 @@ class QuartzProgressBarTagLib {
 	}
     
     def quartzProgressBarList = { attrs, body ->
-        r.require(module: 'quartzProgressBarJs', disposition: 'head')
+        r.require(module: 'quartzProgressBarJs')
         def elId = attrs.get('id')?: 'quartz_progress_bar'
         
         out << """

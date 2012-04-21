@@ -49,8 +49,7 @@ namespace("quartz.progressbar", function(model, view){
                 this.bindTo(this.collection, "reset", this.render, this);
             }
             if(this.model){
-                var self = this;
-                self.modelRaw = progressBarViewCached[this.model.id];
+                this.modelRaw = progressBarViewCached[this.model.id];
                 this.modelRaw.bind('change', this.render);
             }
         },
@@ -150,7 +149,6 @@ namespace("quartz.progressbar", function(model, view){
 	                    progressBarViewCached = newProgressBarViewCached;
 	                    progressDataList.remove(removeList);
 	                    progressDataList.add(addList);
-	                    
 	                }
 	            });
 	        }, 1000);

@@ -10,6 +10,13 @@ public class QuartzProgressData {
     
     Long version = 0
     
+    void setId(String id){
+        version ++
+        String oldId
+        this.id = id
+        QuartzProgressDataFactory.getInstance().changeId(this, oldId, id)
+    }
+    
     void setStatus(String status){
         version ++
         this.@status = status

@@ -7,6 +7,7 @@ public class QuartzProgressDataFactory {
 	def allProgressData = [:]
 	def nextId = 0
 	def deathList = []
+    def externalIdMap = [:] 
 	
 	static instance = new QuartzProgressDataFactory()
 	
@@ -14,6 +15,15 @@ public class QuartzProgressDataFactory {
 		instance
 	}
 	
+    void changeId(QuartzProgressData quartzProgressData, oldId, newId){
+        allProgressData.remove(oldId)
+        allProgressData.put(newId, quartzProgressData)
+    }
+    
+    QuartzProgressData findByExternalId(externalId){
+        externalIdMap.get(externalId)
+    }
+    
 	QuartzProgressData create(id = null){
 		QuartzProgressData quartzProgressData = new QuartzProgressData()
 		
